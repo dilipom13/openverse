@@ -22,7 +22,7 @@ def run_sql(
     sql_template: str,
     postgres_conn_id: str = POSTGRES_CONN_ID,
     task: AbstractOperator = None,
-    timeout: timedelta = None,
+    timeout: float = None,
     handler: callable = RETURN_ROW_COUNT,
     **kwargs,
 ):

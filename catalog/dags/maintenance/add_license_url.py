@@ -33,13 +33,12 @@ logger = logging.getLogger(__name__)
 
 
 def run_sql(
-    sql: str,
-    log_sql: bool = True,
-    method: str = "get_records",
-    handler: callable = None,
-    autocommit: bool = False,
+    sql_template: str,
     postgres_conn_id: str = POSTGRES_CONN_ID,
-    dag_task: AbstractOperator = None,
+    task: AbstractOperator = None,
+    timeout: float = None,
+    handler: callable = RETURN_ROW_COUNT,
+    **kwargs,
 ):
     postgres = PostgresHook(
         postgres_conn_id=postgres_conn_id,
